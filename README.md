@@ -29,9 +29,38 @@
 
 ## 安装
 
-1. 删除 KOReader 中的旧 `dualtranslate.koplugin`（或 `kotranslate.koplugin`）目录。
-2. 将本仓库内容解压到 `koreader/plugins/dualtranslate.koplugin/`。
-3. **完全退出并重启 KOReader**。
+KOReader 的插件目录是安装根目录下的 `plugins/` 文件夹，目录名匹配 `*.koplugin` 即被识别为插件。各平台常见位置：
+
+| 平台 | plugins/ 目录 |
+| --- | --- |
+| Kindle | `/mnt/us/koreader/plugins/` |
+| Android | 内部存储 `/storage/emulated/0/koreader/plugins/`（即 `sdcard/koreader/plugins/`） |
+| Linux / macOS / Windows | 发行包解压目录 `koreader/plugins/`（与 `koreader` 可执行文件同级） |
+| 其他平台 | KOReader 安装根目录下的 `plugins/` |
+
+### 安装步骤
+
+1. 从 [Releases](https://github.com/enneaa/dualtranslate.koplugin/releases) 下载 `dualtranslate.koplugin.zip`。
+2. **删除** KOReader `plugins/` 中旧的 `dualtranslate.koplugin`（或 `kotranslate.koplugin`）目录（如有）。
+3. 将 zip 内容解压到 `plugins/dualtranslate.koplugin/`，最终目录结构应为：
+   ```
+   plugins/dualtranslate.koplugin/
+   ├── main.lua
+   ├── dualtranslate_reader.lua
+   ├── ...（其余 .lua）
+   └── _meta.lua
+   ```
+   > 注意不要多套一层目录（`plugins/dualtranslate.koplugin/dualtranslate.koplugin/…` 不会被加载）。
+4. **完全退出并重启 KOReader**（不是返回书架，是彻底退出进程）。
+
+### 验证安装
+
+重启后打开任意 EPUB，菜单栏出现 **DualTranslate** 菜单即安装成功；菜单项显示「翻译服务：Microsoft Edge（免费）」为默认状态。
+
+### 升级注意事项
+
+- 升级只替换 `plugins/dualtranslate.koplugin/` 目录即可；译文、缓存、队列与设置保存在 KOReader 数据目录，**不会丢失**。
+- 若从旧版 KoTranslate 升级：旧配置 `dualtranslate_configuration.lua` 会自动迁移；旧译文数据不会被读取，需重新翻译（overlay 方案与旧版不兼容）。
 
 ## 使用
 
