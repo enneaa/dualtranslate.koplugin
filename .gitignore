@@ -1,0 +1,14 @@
+# 构建产物
+*.zip
+*.tmp
+
+# 旧版迁移源（运行时可选读取，不进仓库）
+dualtranslate_configuration.lua
+dualtranslate_configuration_sample.lua
+
+# 过时文档（双语 EPUB 模式已移除）
+INLINE_EPUB.md
+
+# 系统与编辑器
+.DS_Store
+*.swp
