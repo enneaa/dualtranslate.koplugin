@@ -156,7 +156,7 @@ Reader.attach(plugin)
 plugin.cache = { clearForBook = function() end, close = function() end, open = function() end }
 plugin.getTargetLang = function(self) return settings["dualtranslate_target_lang"] or "zh-Hans" end
 plugin.getSourceLang = function(self) return settings["dualtranslate_source_lang"] or "auto" end
-plugin.getMode = function(self) return settings["dualtranslate_mode"] or "system" end
+plugin.getMode = function(self) return settings["dualtranslate_mode"] or "microsoft_free" end
 plugin.isPageTranslationEnabled = function(self) return settings["dualtranslate_page_translation"] == true end
 plugin.ui = { document = { file = "/books/test.epub" } }
 plugin.epub = {}

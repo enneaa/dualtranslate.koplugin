@@ -11,8 +11,8 @@
 
 | 引擎 | 说明 | 默认 |
 | --- | --- | --- |
-| system（系统翻译） | 调用 KOReader 内置 `ui/translator`，逐段请求 | ✓ 默认 |
-| microsoft_free（Microsoft Edge 免费） | `edge.microsoft.com/translate/translatetext`，批量 ≤12 条 / ≤4000 字节，批量失败自动降级逐条重试 | |
+| microsoft_free（Microsoft Edge 免费） | `edge.microsoft.com/translate/translatetext`，批量 ≤12 条 / ≤4000 字节，批量失败自动降级逐条重试 | ✓ 默认 |
+| system（系统翻译） | 调用 KOReader 内置 `ui/translator`，逐段请求 | |
 
 目标语言归一化：`zh-Hans → zh`、`zh-Hant → zh-TW`，与 KOReader 内置翻译一致。
 

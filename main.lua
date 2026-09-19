@@ -133,9 +133,9 @@ function dualtranslate:queueStats()
 end
 
 function dualtranslate:getMode()
-    local mode = self:getSetting("mode", "system")
+    local mode = self:getSetting("mode", "microsoft_free")
     if mode ~= "system" and mode ~= "microsoft_free" then
-        return "system"
+        return "microsoft_free"
     end
     return mode
 end

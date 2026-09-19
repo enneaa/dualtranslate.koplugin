@@ -686,3 +686,7 @@ KOReader 的 `plugins/` 目录，重启 KOReader，在阅读菜单中出现
 ## 1.2.11-xp48 — 字号改用 KOReader 原生 SpinWidget 增减控件
 - "译文字号"从 radio 子菜单改为原生 SpinWidget（- / + 增减 + 点按数字直接输入 8–40），与 KOReader 其余数值设置一致。
 - 删除 buildInlineFontMenu / showInlineFontDialog 及其测试白名单条目；测试补 spinwidget stub。
+
+## 1.2.11-xp49 — 默认引擎改为 Microsoft Edge 免费翻译
+- 默认翻译引擎从 system（KOReader 内置）改为 microsoft_free（Edge 免费批量），新安装/未显式选择过引擎的用户直接使用微软翻译。
+- README 引擎对照表与测试 mock 同步更新。
