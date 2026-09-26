@@ -662,10 +662,7 @@ function dualtranslate:_runTranslation(item)
                 })
             end
             UIManager:scheduleIn(0.2, function()
-                if self.ui and self.ui.document and self.ui.document.file == book_path then
-                    self:saveSetting("translation_visible", true)
-                    self:refreshDocumentStyles()
-                end
+                self:scheduleTranslationStyleRefresh(book_path)
                 self:startNextQueuedTranslation()
             end)
         end)
@@ -967,6 +964,23 @@ function dualtranslate:translateTextBatchForEpub(texts)
         end
     end
     return results, first_error
+end
+
+-- Translation-completion style refresh, throttled: consecutive chapters that
+-- finish close together are merged into a single re-render, instead of each
+-- triggering a full CREngine re-layout (which shows up as a full-screen
+-- flicker on e-ink devices like the Kindle).  Setting changes and manual
+-- toggles still refresh immediately via refreshDocumentStyles().
+function dualtranslate:scheduleTranslationStyleRefresh(book_path)
+    if self._style_refresh_scheduled then return end
+    self._style_refresh_scheduled = true
+    UIManager:scheduleIn(1.5, function()
+        self._style_refresh_scheduled = nil
+        if self.ui and self.ui.document and self.ui.document.file == book_path then
+            self:saveSetting("translation_visible", true)
+            self:refreshDocumentStyles()
+        end
+    end)
 end
 
 -- Apply the translation layer styles (non-destructive overlay) without
